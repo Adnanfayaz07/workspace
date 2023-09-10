@@ -23,6 +23,8 @@ req.on('data',(chunk)=>{
 console.log(chunk)
 body.push(chunk);
 })
+
+
 return req.on('end',()=>{
 const parsedbody=Buffer.concat(body).toString();
 const message=parsedbody.split('=')[1]
@@ -30,6 +32,7 @@ fs.writeFile('message.txt',message,(err)=>{
     if(err){
         console.log(err);
     }
+    
     //console.log(`indise fs.writefile`)
     res.statusCode=302;
     res.setHeader('Location','/');
@@ -40,7 +43,7 @@ fs.writeFile('message.txt',message,(err)=>{
 else{
 res.setHeader('content-Type','text/html');
 res.write('<html>');
-res.write('<head><title>MY FIRST PAGE</title><head></head>');
+res.write('<head><title>MY FIRST PAGE</title><head>');
 res.write('<body><h1>Hello from my Node JS server</h1></body>');
 res.write('</html>')
 res.end();
