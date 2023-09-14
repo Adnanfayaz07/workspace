@@ -6,4 +6,4 @@ exports.contactuscontroller = (req,res,next)=>{
 exports.contactfilled =(req,res,next)=>{
     console.log(req.body);
     res.redirect('/sucess')
-};
+}   

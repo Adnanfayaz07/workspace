@@ -8,3 +8,4 @@ const router = express.Router();
 router.get('/', productscontroller.getproducts);
 
 module.exports = router;
+

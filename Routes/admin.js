@@ -13,4 +13,4 @@ router.get('/add-product',productscontroller.getaddproduct);
 router.post('/add-product',productscontroller.postaddproduct );
 
 module.exports = router;
-
+ 
