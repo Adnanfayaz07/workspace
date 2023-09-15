@@ -9,7 +9,6 @@ exports.getAddProduct = (req, res, next) => {
     activeAddProduct: true
   });
 };
-
 exports.postAddProduct = (req, res, next) => {
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
