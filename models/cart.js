@@ -61,6 +61,7 @@ static getcart(cb){
         const cart=JSON.parse(filecontent);
         if(err){
             cb(null)
+            
         }
         else{
             cb(cart)
