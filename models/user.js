@@ -1,25 +1,23 @@
 const Sequelize=require('sequelize');
 const sequelize=require('../util/database')
-const Product=sequelize.define('product',{
+const User=sequelize.define('user',{
   id: {
     type:Sequelize.INTEGER,
     autoIncrement: true,
     allowNULL:false,
     primaryKey:true
   },
-  title:Sequelize.STRING,
-  price:{
-    type:Sequelize.DOUBLE,
-    allowNULL:false
-  },
-  imageUrl:{
+  name:Sequelize.STRING,
+  email:{
     type:Sequelize.STRING,
-    allowNULL:false
-  },
-  description:{
+    unique:true
+},
+
+ phonenumber:{
     type:Sequelize.STRING,
-    allowNULL:false
-  }
+    unique:true
+}
+
 });
 
-module.exports = Product;
+module.exports = User;
