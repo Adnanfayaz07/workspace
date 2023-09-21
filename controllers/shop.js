@@ -53,23 +53,25 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getCart = (req, res, next) => {
-  cart.getcart(cart=>{
-    Product.fetchAll(products=>{
-      const cartproducts=[]
-      for (product of products){
-        const cartproductdata=cart.products.find(prod=>prod.id===product.id);
-        if(cartproductdata){
-          cartproducts.push({productdata:product,qty:cartproductdata.qty})
+  cart.getcart(cart => {
+    // Use Sequelize's Product.findAll to retrieve all products
+    Product.findAll({})
+      .then(products => {
+        const cartproducts = [];
+        for (product of products) {
+          const cartproductdata = cart.products.find(prod => prod.id === product.id);
+          if (cartproductdata) {
+            cartproducts.push({ productdata: product, qty: cartproductdata.qty });
+          }
         }
-      }
-      res.render('shop/cart', {
-        path: '/cart',
-        pageTitle: 'Your Cart',
-        products:cartproducts
-      });
-    })
-  })
-  
+        res.render('shop/cart', {
+          path: '/cart',
+          pageTitle: 'Your Cart',
+          products: cartproducts,
+        });
+      })
+      .catch(err => console.log(err));
+  });
 };
 
 exports.getOrders = (req, res, next) => {
